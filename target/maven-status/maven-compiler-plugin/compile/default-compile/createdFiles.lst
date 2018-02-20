@@ -1,0 +1,17 @@
+com\weather\WebConfig.class
+com\weather\controller\WeatherDataController.class
+com\weather\repository\WeatherDataRepository.class
+com\weather\service\impl\WeatherDataServiceImpl.class
+com\weather\JPAConfig.class
+com\weather\service\WeatherDataService.class
+com\weather\filters\LoginFilter.class
+com\weather\ServletInitializer.class
+com\weather\SwaggerConfig.class
+com\weather\entity\WeatherData.class
+com\weather\constants\URI.class
+com\weather\entity\Wind.class
+com\weather\repository\impl\WeatherDataRepositoryImpl.class
+com\weather\exception\NotFoundException.class
+com\weather\filters\AllURLFilter.class
+com\weather\pojo\AverageData.class
+com\weather\exception\BadRequestException.class

@@ -1,13 +1,11 @@
 package com.weather.service.impl;
 
+import com.weather.pojo.AverageData;
 import com.weather.entity.WeatherData;
-import com.weather.exception.BadRequestException;
+import com.weather.exception.NotFoundException;
 import com.weather.repository.WeatherDataRepository;
 import com.weather.service.WeatherDataService;
 import java.util.List;
-import java.util.Optional;
-import javassist.NotFoundException;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,23 +19,33 @@ public class WeatherDataServiceImpl implements WeatherDataService {
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public WeatherData findOne(String id) throws NotFoundException {
-        return repository.findOne(id)
-                .orElseThrow(() -> new NotFoundException("WeatherData with id " + id + " does not exist"));
-    }
-
-    @Override
     @Transactional
     public WeatherData create(WeatherData user) {
         return repository.create(user);
     }
 
     @Override
-    @Transactional
-    public WeatherData update(String id, WeatherData user) throws NotFoundException {
-        repository.findOne(id).orElseThrow(() -> new NotFoundException("WeatherData with id " + id + " does not exist"));
-        return repository.update(user);
+    public List<String> getCityList() {
+        return repository.getCityList();
     }
 
+    @Override
+    public WeatherData getLatestWeather(String city) {
+        return repository.getLatestWeather(city).orElseThrow(() -> new NotFoundException("No Data available for " + city));
+    }
+
+    @Override
+    public String getLatestProperty(String city, String property) {
+        return repository.getLatestProperty(city, property);
+    }
+
+    @Override
+    public List<AverageData> getHourlyWeather(String city) {
+        return repository.getHourlyWeather(city);
+    }
+
+    @Override
+    public List<AverageData> getDailyWeather(String city) {
+        return repository.getDailyWeather(city);
+    }
 }

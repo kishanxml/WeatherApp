@@ -1,17 +1,21 @@
 package com.weather.service;
 
+import com.weather.pojo.AverageData;
 import com.weather.entity.WeatherData;
 import java.util.List;
+import java.util.Optional;
 
 public interface WeatherDataService {
 
-    public List<WeatherData> findAll() throws Exception;
+    List<String> getCityList();
 
-    public WeatherData findOne(String id) throws Exception;
+    public String getLatestProperty(String city, String propoerty);
 
-    public WeatherData create(WeatherData user) throws Exception;
+    public  WeatherData getLatestWeather(String city);
 
-    public WeatherData update(String id, WeatherData user) throws Exception;
+    public List<AverageData> getHourlyWeather(String city);
 
-    public void delete(String id) throws Exception;
+    public List<AverageData> getDailyWeather(String city);
+
+    public WeatherData create(WeatherData data);
 }

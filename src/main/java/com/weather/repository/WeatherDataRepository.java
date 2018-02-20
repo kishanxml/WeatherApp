@@ -1,16 +1,22 @@
 package com.weather.repository;
 
+import com.weather.pojo.AverageData;
 import com.weather.entity.WeatherData;
 import java.util.List;
+import java.util.Optional;
 
 public interface WeatherDataRepository {
 
-    List<WeatherData> getCityList();
+    List<String> getCityList();
 
-    public String getAVGWeather(String City);
+    public String getLatestProperty(String City, String property);
 
-    public WeatherData getLatestWeather(String City);
+    public Optional<WeatherData> getLatestWeather(String City);
 
-    public WeatherData create(WeatherData user);
+    public List<AverageData> getHourlyWeather(String City);
+
+    public List<AverageData> getDailyWeather(String City);
+
+    public WeatherData create(WeatherData data);
 
 }
